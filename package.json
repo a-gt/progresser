@@ -1,0 +1,28 @@
+{
+  "name": "progresser",
+  "version": "1.0.0",
+  "description": "A simple yet intuitive progress bar for your terminal.",
+  "main": "src/progresser.js",
+  "scripts": {
+    "dev": "nodemon src/progresser.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ApexioDaCoder/progresser.git"
+  },
+  "keywords": [
+    "progress-bar"
+  ],
+  "author": "ApexioDaCoder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ApexioDaCoder/progresser/issues"
+  },
+  "homepage": "https://github.com/ApexioDaCoder/progresser#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cli-cursor": "^3.1.0",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {}
+}
