@@ -1,13 +1,12 @@
 const spinners = require('./spinners.json');
 const cliCursor = require('cli-cursor');
-const readline = require('readline');
 
 class Spinner {
   constructor (style = 'dots', stream = process.stderr, onProgressBar = false) {
     // Make sure spinner style is allowed
     let spinData = spinners[style];
     if (!spinData) {
-      if (typeof style === 'array')
+      if (style.constructor === Array)
         spinData = {
           interval : 100,
           frames   : style,
