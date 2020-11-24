@@ -161,23 +161,3 @@ class Progresser {
 }
 
 module.exports = Progresser;
-
-let timer = null;
-const bar = new Progresser(
-  `Progress Bar: {bar} {spinner} {current}${chalk.gray(chalk.bold('/'))}{size} {percent}%`,
-  {},
-  () => {
-    clearInterval(timer);
-    console.log(chalk.blueBright(chalk.bold('Done!')));
-  },
-);
-
-timer = setInterval(() => {
-  if (bar.current === 10) {
-    bar.interrupt('hi');
-  }
-  if (bar.current === 15) {
-    bar.interrupt('bye');
-  }
-  bar.tick();
-}, 100);
