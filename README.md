@@ -12,7 +12,8 @@ npm i progresser
 ```
 
 ```js
-const { Progresser } = require('progresser')
+const { Progresser } = require('progresser');
+const chalk = require('chalk');
 
 let timer = null;
 const bar = new Progresser(
@@ -29,7 +30,7 @@ timer = setInterval(() => {
     bar.interrupt('This is an example of an interruption.');
   }
   if (bar.current === 15) {
-    bar.interrupt('Another example');
+    bar.interrupt('Another example of an interruption!');
   }
   bar.tick();
 }, 100);

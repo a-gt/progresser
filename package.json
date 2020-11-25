@@ -1,10 +1,10 @@
 {
   "name": "progresser",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple yet intuitive progress bar for your terminal.",
-  "main": "src/progresser.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/progresser.js"
+    "dev": "nodemon test/test.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "cli-cursor": "^3.1.0",
-    "lodash": "^4.17.20"
+    "lodash.merge": "^4.6.2"
   },
   "devDependencies": {}
 }

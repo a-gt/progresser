@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const cliCursor = require('cli-cursor');
-const _ = require('lodash');
+const merge = require('lodash.merge');
 const Spinner = require('./utils/spinner');
 
 class Progresser {
@@ -28,7 +28,7 @@ class Progresser {
     // Deal with number options
     if (typeof options === 'number') options = { size: options };
     // Default Options
-    options = _.merge({}, defaultOptions, options);
+    options = merge({}, defaultOptions, options);
     // Deal with no progress bar in format
     if (!format.includes('{bar}'))
       throw new Error('You need to have at least one "{bar}" in the format for the progress bar.');
