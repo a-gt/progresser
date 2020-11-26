@@ -1,5 +1,6 @@
 const spinners = require('./spinners.json');
 const cliCursor = require('cli-cursor');
+const readline = require('readline');
 
 class Spinner {
   constructor (style = 'dots', stream = process.stderr, onProgressBar = false) {
@@ -32,7 +33,7 @@ class Spinner {
       const message = format.replace(/\{spinner\}/gi, this.current());
       this.stream.write(message);
       this.timer = setInterval(() => {
-        this.stream.cursorTo(x);
+        readline.cursorTo(this.stream, x);
         this.stream.write(this.spin());
       }, this.interval);
     }

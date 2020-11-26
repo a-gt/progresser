@@ -1,4 +1,4 @@
-const { Progresser } = require('../')
+const { Progresser } = require('../');
 const chalk = require('chalk')
 
 let timer = null;

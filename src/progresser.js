@@ -2,6 +2,8 @@ const chalk = require('chalk');
 const cliCursor = require('cli-cursor');
 const merge = require('lodash.merge');
 const Spinner = require('./utils/spinner');
+const readline = require('readline');
+const signalExit = require('signal-exit')
 
 class Progresser {
   constructor (format = '{bar}', options = {}, callback = () => {}) {
@@ -101,8 +103,8 @@ class Progresser {
   // Render the bar
   render (format) {
     if (this.terminated) return;
-    this.stream.cursorTo(0);
-    this.stream.clearLine();
+    readline.cursorTo(this.stream, 0);
+    readline.clearLine(this.stream)
     this.stream.write(this.formatStr(format));
   }
 
@@ -126,30 +128,30 @@ class Progresser {
 
   interrupt (message) {
     this.interruptions++;
-    this.stream.cursorTo(0);
-    this.stream.moveCursor(0, this.interruptions);
+    readline.cursorTo(this.stream, 0);
+    readline.moveCursor(this.stream, 0, this.interruptions);
     this.stream.write(`\n${this.formatStr(message)}`);
-    this.stream.moveCursor(0, -this.interruptions);
+    readline.moveCursor(this.stream, 0, -this.interruptions);
   }
 
   // End bar
   terminate () {
     if (this.terminated) return;
+    cliCursor.show();
     this.terminated = true;
     if (this.clear) {
       if (this.stream.clearLine) {
         this.stream.clearLine();
-        this.stream.cursorTo(0);
-        this.stream.moveCursor(0, this.interruptions);
+        readline.cursorTo(this.stream, 0);
+        readline.moveCursor(this.stream, 0, this.interruptions);
       }
     }
     else {
-      this.stream.moveCursor(0, this.interruptions);
+      readline.moveCursor(this.stream, 0, this.interruptions);
       this.stream.write('\n');
     }
     if (this.spinner) clearInterval(this.timer);
     this.callback(this);
-    cliCursor.show();
     return;
   }
 
